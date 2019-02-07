@@ -1,0 +1,13 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: Spring-Cloud-Config-Server
+  profiles:
+    active: native     # 本地
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: D:/config/        # 配置文件路径
+

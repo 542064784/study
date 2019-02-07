@@ -1,0 +1,27 @@
+project:
+  mq:
+    host: 192.168.1.180        #host
+    port: 1416                 # 监听端口
+    queue-manager: QM         #队列管理器
+    channel: mqm.SVRCONN      #服务器连接通道
+    username: mqm             #用户名
+    password: 123456          #密码
+    receive-timeout: 2000    #连接超时时间
+    ccid: 1208                 # 1208 UTF-8
+
+# active mq 连接信息
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+
+# ibm mq 连接信息
+ibm:
+  mq:
+    channel:  通道
+    conn-name: ip(host)
+    queue-manager: 队列管理器
+
+
+

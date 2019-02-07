@@ -1,0 +1,9 @@
+server:
+  port: 9007
+spring:
+  application:
+    name: Spring-Cloud-Eureka-Police
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9005/eureka/
