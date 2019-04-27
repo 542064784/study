@@ -1,10 +1,8 @@
-package com.damon.util;
+package com.damon.demo;
 
 import org.springframework.core.io.ClassPathResource;
-
 import java.io.IOException;
 import java.io.InputStream;
-
 /**
  * linux 读取classpath下文件
  *
