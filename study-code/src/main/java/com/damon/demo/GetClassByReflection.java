@@ -33,7 +33,7 @@ public class GetClassByReflection {
     private ApplicationContext context;
 
     public void getClassDemo(){
-        //  创建 reflections 对象
+        //  创建 reflections 对象    reflection 使用中莫名其妙出现 ClassNotFound 异常
         Reflections reflections = new Reflections("packageName");
         // 获得所有的类上有 @Repository 注解的class   此方式必须在自定义的Repository上加上@Respsitory 注解
         // 此方法与 getReflectionByResource() 方法中获得到的class对象的使用方法相同
@@ -42,7 +42,7 @@ public class GetClassByReflection {
             // 获得spring 容器中自动为此自定义Repository的接口的代理实现
             JpaRepository jpaRepository  = (JpaRepository) context.getBean(clazz);
             // 获得父接口 JpaRepository 中的泛型的第一个 自己是接口时使用
-            Class<?> aClass = (Class<?>) ((ParameterizedType) clazz.getAnnotatedInterfaces()[0]).getActualTypeArguments()[0];
+            Class<?> aClass = (Class<?>) ((ParameterizedType) clazz.getGenericInterfaces()[0]).getActualTypeArguments()[0];
             //  获得父类或父接口中泛型的第一个 自己必须是实现类
             //Class<?> aClass = (Class<?>)((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[0];
             REPOSITORY_MAP.put(aClass, jpaRepository);

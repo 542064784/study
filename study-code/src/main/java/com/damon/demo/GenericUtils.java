@@ -3,7 +3,6 @@ package com.damon.demo;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Objects;
-
 /**
  *  获得泛型 的工具类
  *
@@ -20,12 +19,17 @@ public class GenericUtils {
      * @return             被查找的父类的第一个泛型
      */
     public static Class getSuperClassGeneric(final Class sourceClass,final Class superClass){
-        ParameterizedType parameterizedType = (ParameterizedType) sourceClass.getGenericSuperclass();
-        Class<?> rawType = (Class<?>) parameterizedType.getRawType();
-        if (rawType.equals(superClass)){
-            return (Class) parameterizedType.getActualTypeArguments()[0];
+        Type type = sourceClass.getGenericSuperclass();
+        if (type instanceof ParameterizedType){
+            ParameterizedType parameterizedType = (ParameterizedType) type;
+            Class<?> rawType = (Class<?>) parameterizedType.getRawType();
+            if (rawType.equals(superClass)){
+                return (Class) parameterizedType.getActualTypeArguments()[0];
+            }
+        }else {
+            return getSuperClassGeneric((Class)type, superClass);
         }
-        return getSuperClassGeneric(rawType, superClass);
+        return null;
     }
 
     /**

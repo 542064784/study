@@ -1,7 +1,5 @@
 package com.damon.demo;
 
-import org.junit.Test;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -159,7 +157,7 @@ public class FileIO {
         return getFile(file.getParentFile(), --count);
     }
 
-    @Test
+
     public  void testZip() throws IOException {
         File file = new File("src/main/java");
         ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream("src/main/resource/testZip.zip"));
